@@ -1,0 +1,54 @@
+﻿@model GestionClient.Models.Client
+
+<h2>Détails du client</h2>
+<div>
+    <strong>Nom :</strong> @Model.Nom
+</div>
+<div>
+    <strong>Prénom :</strong> @Model.Prenom
+</div>
+<div>
+    <strong>Ville :</strong> @Model.Ville
+</div>
+
+<hr />
+
+<h2>Liste des clients</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Ville</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var client in ViewBag.Clients)
+        {
+            <tr>
+                <td>@client.Id</td>
+                <td>@client.Nom</td>
+                <td>@client.Prenom</td>
+                <td>@client.Ville</td>
+                <td>
+                    <!-- Lien pour éditer le client -->
+                    <a asp-action="Index" asp-route-id="@client.Id" class="btn btn-primary">Modifier</a>
+
+                    <!-- Formulaire pour supprimer le client -->
+                    <form asp-action="Delete" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@client.Id" />
+                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Lien pour ajouter un nouveau client -->
+<p>
+    <a asp-action="Index" class="btn btn-success">Ajouter un client</a>
+</p>

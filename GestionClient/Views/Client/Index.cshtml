@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Client/Index";
+    
+}
+
+<h1>Client/Index</h1>
+
+<h3>Liste des Clients</h3>
+
+<p>
+    <form asp-action="save" method="post">
+    <ul>
+            <li>Id: @Html.TextBox("Id", (int?)(ViewBag.ClientToEdit?.Id))<br></li>
+            <li>Nom: @Html.TextBox("Nom", (string)(ViewBag.ClientToEdit?.Nom) ?? "")<br></li>
+            <li>Prénom: @Html.TextBox("Prenom", (string)(ViewBag.ClientToEdit?.Prenom) ?? "")<br></li>
+            <li>Ville: @Html.TextBox("Ville", (string)(ViewBag.ClientToEdit?.Ville) ?? "")<br></li>
+    </ul>
+    <input type="submit" value="Envoyer" />
+    </form>
+</p>
